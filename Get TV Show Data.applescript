@@ -44,7 +44,6 @@ on parse_filename for trackItem
 			if offsetE = (offsetS + 4) then
 				set epnum to text (offsetE + 1) through (offsetE + 2) of nameItem
 				set seasnum to text (offsetS + 2) through (offsetS + 3) of nameItem
-				log "First clause hit: " & epnum & " " & seasnum
 			else
 				set nameItem to name of trackItem
 				set offsetS to (offset of "S" in nameItem)
@@ -52,8 +51,6 @@ on parse_filename for trackItem
 				if offsetE = (offsetS + 3) then
 					set epnum to text (offsetE + 1) through (offsetE + 2) of nameItem
 					set seasnum to text (offsetS + 1) through (offsetS + 2) of nameItem
-					log "Second clause hit: " & epnum & " " & seasnum
-					
 				else
 					set epnum to 0
 					set seasnum to 0
@@ -146,7 +143,6 @@ on update_track(trackItem, trackData)
 	set trackShow to trackShow of trackData
 	set trackSeason to (trackSeason of trackData) as number
 	set trackEpisode to (trackEpisode of trackData) as number
-	log trackShow & " - " & trackSeason & " - " & trackEpisode
 	tell application "iTunes"
 		set season number of trackItem to trackSeason
 		set episode number of trackItem to trackEpisode
